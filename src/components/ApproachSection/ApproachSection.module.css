@@ -1,0 +1,387 @@
+/**
+ * ApproachSection module styles.
+ * Provides the interactive, animated one-by-one 4-step process journey,
+ * connecting progress rail, card hover states, and theme adaptations.
+ */
+
+.section {
+  background: var(--color-approach-bg);
+  padding: var(--section-padding-y, 112px) 0;
+  border-top: 1px solid var(--color-approach-border);
+  border-bottom: 1px solid var(--color-approach-border);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.ambientGlow {
+  position: absolute;
+  top: -120px;
+  right: -100px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(0, 78, 252, 0.18) 0%, transparent 70%);
+  filter: blur(60px);
+  pointer-events: none;
+}
+
+.container {
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-container-x);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+}
+
+/* Header Area */
+.headerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.headerText {
+  max-width: 680px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.overline {
+  font-size: var(--font-size-overline);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-overline);
+  color: var(--color-approach-overline);
+  text-transform: uppercase;
+  transition: color 0.25s ease;
+}
+
+.title {
+  margin: 0;
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-section-title);
+  line-height: var(--line-height-heading);
+  letter-spacing: var(--letter-spacing-tight);
+  color: var(--color-approach-title);
+  text-wrap: balance;
+  transition: color 0.25s ease;
+}
+
+.description {
+  margin: 0;
+  font-size: var(--font-size-body-md);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-body);
+  color: var(--color-approach-desc);
+  transition: color 0.25s ease;
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.controlsWrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 8px 16px;
+  border-radius: 9999px;
+  font-size: 13px;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-approach-title);
+}
+
+.playPauseBtn {
+  background: none;
+  border: none;
+  color: var(--color-approach-overline);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  font-size: 13px;
+  border-radius: 4px;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.playPauseBtn:hover {
+  transform: scale(1.15);
+}
+
+.stepCounter {
+  letter-spacing: 0.06em;
+  color: var(--color-approach-overline);
+}
+
+/* 4 Connected Process Stations */
+.timelineTrack {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+/* Connecting Laser Line across the 4 steps */
+.connectingLine {
+  position: absolute;
+  top: 48px;
+  left: 12%;
+  right: 12%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  z-index: 1;
+}
+
+.connectingLineActive {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: linear-gradient(90deg, var(--brand-saphelon-blue) 0%, var(--brand-clarity-cyan) 100%);
+  transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 0 10px var(--brand-clarity-cyan);
+}
+
+/* Individual Process Step Card */
+.stepCard {
+  position: relative;
+  z-index: 2;
+  background: rgba(14, 20, 40, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-xl);
+  padding: 30px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, background-color 0.35s ease;
+  overflow: hidden;
+}
+
+/* Staggered entrance animation one-by-one */
+.animateIn {
+  animation: stepApproach 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes stepApproach {
+  0% {
+    opacity: 0;
+    transform: translateY(28px) scale(0.92);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+.stepCard:hover {
+  transform: translateY(-5px);
+  border-color: rgba(27, 224, 253, 0.4);
+}
+
+.stepCardActive {
+  background: rgba(14, 20, 40, 0.95);
+  border-color: var(--brand-clarity-cyan);
+  box-shadow: 0 14px 40px rgba(0, 78, 252, 0.32), 0 0 0 1px var(--brand-clarity-cyan);
+  transform: translateY(-6px);
+}
+
+.topRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.stepCircle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: var(--font-weight-bold);
+  color: #FFFFFF;
+  background: rgba(11, 16, 32, 0.9);
+  transition: border-color 0.3s ease, background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stepCardActive .stepCircle {
+  border-color: var(--brand-clarity-cyan);
+  background: var(--brand-saphelon-blue);
+  color: #FFFFFF;
+  box-shadow: 0 0 14px var(--brand-clarity-cyan);
+}
+
+.stageBadge {
+  font-size: 11px;
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--color-approach-step-desc);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: color 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+}
+
+.stepCardActive .stageBadge {
+  background: rgba(27, 224, 253, 0.14);
+  color: var(--brand-clarity-cyan);
+  border-color: rgba(27, 224, 253, 0.4);
+}
+
+.stepTitle {
+  margin: 0;
+  font-size: 21px;
+  font-weight: var(--font-weight-bold);
+  color: #FFFFFF;
+  line-height: 1.25;
+}
+
+.stepDescription {
+  margin: 0;
+  font-size: 14px;
+  font-weight: var(--font-weight-medium);
+  line-height: 1.55;
+  color: var(--color-approach-step-desc);
+  min-height: 44px;
+}
+
+.deliverablePill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 12px;
+  font-weight: var(--font-weight-semibold);
+  color: #D4DEF8;
+  margin-top: auto;
+}
+
+.pillIcon {
+  color: var(--brand-clarity-cyan);
+  font-size: 11px;
+}
+
+/* Active Progress Bar at the bottom of the active card */
+.cardProgressBar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background: var(--brand-clarity-cyan);
+  width: 0%;
+  box-shadow: 0 0 8px var(--brand-clarity-cyan);
+}
+
+.stepCardActive .cardProgressBar {
+  width: 100%;
+  animation: cardProgress 4s linear;
+}
+
+@keyframes cardProgress {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* Light Theme overrides */
+:global([data-theme='mist']) .stepCard {
+  background: #FFFFFF;
+  border-color: var(--brand-border-light);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+}
+
+:global([data-theme='mist']) .stepCardActive {
+  background: #FFFFFF;
+  border-color: var(--brand-saphelon-blue);
+  box-shadow: 0 12px 36px rgba(0, 78, 252, 0.16), 0 0 0 1px var(--brand-saphelon-blue);
+}
+
+:global([data-theme='mist']) .stepCircle {
+  background: var(--brand-mist);
+  color: var(--brand-ink);
+  border-color: var(--brand-border-light);
+}
+
+:global([data-theme='mist']) .stepCardActive .stepCircle {
+  background: var(--brand-saphelon-blue);
+  color: #FFFFFF;
+  border-color: var(--brand-saphelon-blue);
+  box-shadow: 0 0 12px rgba(0, 78, 252, 0.35);
+}
+
+:global([data-theme='mist']) .stepTitle {
+  color: var(--brand-ink);
+}
+
+:global([data-theme='mist']) .stepDescription {
+  color: var(--brand-slate-dark);
+}
+
+:global([data-theme='mist']) .stageBadge {
+  background: var(--brand-mist);
+  color: var(--brand-slate-dark);
+  border-color: var(--brand-border-light);
+}
+
+:global([data-theme='mist']) .stepCardActive .stageBadge {
+  background: rgba(0, 78, 252, 0.08);
+  color: var(--brand-saphelon-blue);
+  border-color: rgba(0, 78, 252, 0.25);
+}
+
+:global([data-theme='mist']) .deliverablePill {
+  background: var(--brand-mist);
+  border-color: var(--brand-border-light);
+  color: var(--brand-ink);
+}
+
+:global([data-theme='mist']) .controlsWrap {
+  background: #FFFFFF;
+  border-color: var(--brand-border-light);
+  color: var(--brand-ink);
+}
+
+@media (max-width: 1024px) {
+  .timelineTrack {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .connectingLine {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .timelineTrack {
+    grid-template-columns: 1fr;
+  }
+
+  .headerRow {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

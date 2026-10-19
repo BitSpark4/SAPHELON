@@ -1,0 +1,174 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-page-bg);
+}
+
+.section {
+  padding: var(--spacing-section-y) 0;
+  border-bottom: 1px solid var(--color-card-border);
+}
+
+.container {
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-container-x);
+  box-sizing: border-box;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 64px;
+  align-items: flex-start;
+}
+
+.infoColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.detailsCard {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-xl);
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cardHeading {
+  font-size: 20px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.infoList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-size: 15px;
+}
+
+.infoItem {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.infoLabel {
+  font-size: 12px;
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-highlight);
+  transition: color 0.25s ease;
+}
+
+.infoValue {
+  color: var(--color-text-primary);
+  text-decoration: none;
+  font-weight: var(--font-weight-medium);
+  transition: color 0.25s ease;
+}
+
+.infoValue:hover {
+  text-decoration: underline;
+}
+
+/* What Happens Next */
+.stepsCard {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-xl);
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.stepRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.stepNum {
+  font-size: 14px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-highlight);
+  background: rgba(0, 78, 252, 0.08);
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(0, 78, 252, 0.2);
+  transition: color 0.25s ease;
+}
+
+.stepText {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stepTitle {
+  font-size: 15px;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin: 0;
+  transition: color 0.25s ease;
+}
+
+.stepDesc {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+  margin: 0;
+  transition: color 0.25s ease;
+}
+
+/* Tips Box */
+.tipsCard {
+  background: var(--color-section-alt-bg);
+  border: 1px dashed var(--color-card-border);
+  border-radius: var(--radius-xl);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.tipsHeading {
+  font-size: 15px;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.tipsList {
+  list-style: disc;
+  margin: 0;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+}
+
+@media (max-width: 960px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .container {
+    padding: 0 var(--spacing-container-x-mobile);
+  }
+}

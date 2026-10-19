@@ -1,0 +1,94 @@
+.section {
+  padding: var(--section-padding-y, 112px) 0;
+  background-color: var(--color-page-bg);
+  position: relative;
+  border-top: 1px solid var(--color-card-border);
+  border-bottom: 1px solid var(--color-card-border);
+}
+
+.container {
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-container-x);
+  box-sizing: border-box;
+}
+
+.header {
+  margin-bottom: 56px;
+  max-width: 640px;
+}
+
+.overline {
+  font-size: var(--font-size-overline);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-overline);
+  color: var(--color-text-highlight);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  transition: color 0.25s ease;
+}
+
+.title {
+  font-size: var(--font-size-section-title);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-heading);
+  letter-spacing: var(--letter-spacing-tight);
+  color: var(--color-text-primary);
+  margin: 0;
+  transition: color 0.25s ease;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.card {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-xl);
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: transform var(--transition-normal), border-color var(--transition-normal), background-color 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--brand-saphelon-blue);
+}
+
+.number {
+  font-size: 15px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-highlight);
+  letter-spacing: 0.08em;
+  transition: color 0.25s ease;
+}
+
+.pointTitle {
+  font-size: 20px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin: 0;
+  line-height: var(--line-height-card);
+}
+
+.pointDesc {
+  font-size: 15px;
+  line-height: var(--line-height-body);
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 0 var(--spacing-container-x-mobile);
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

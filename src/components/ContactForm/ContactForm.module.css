@@ -1,0 +1,181 @@
+.formCard {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-2xl);
+  padding: 44px 40px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.28);
+}
+
+.formHeader {
+  margin-bottom: 32px;
+}
+
+.formTitle {
+  font-size: 24px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin: 0 0 8px 0;
+}
+
+.formSubtitle {
+  font-size: 15px;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.fullWidth {
+  grid-column: 1 / -1;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label {
+  font-size: 13.5px;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+.required {
+  color: var(--color-text-highlight);
+  margin-left: 3px;
+  transition: color 0.25s ease;
+}
+
+.input,
+.select,
+.textarea {
+  width: 100%;
+  background: var(--color-input-bg);
+  border: 1px solid var(--color-input-border);
+  border-radius: var(--radius-md);
+  padding: 13px 16px;
+  font-family: inherit;
+  font-size: 15px;
+  color: var(--color-text-primary);
+  outline: none;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background-color 0.25s ease, color 0.25s ease;
+  box-sizing: border-box;
+}
+
+.input:focus,
+.select:focus,
+.textarea:focus {
+  border-color: var(--brand-saphelon-blue);
+  box-shadow: 0 0 0 3px rgba(0, 78, 252, 0.15);
+}
+
+.select option {
+  background-color: var(--color-card-bg);
+  color: var(--color-text-primary);
+}
+
+.textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.radioGroup {
+  display: flex;
+  gap: 24px;
+  margin-top: 4px;
+}
+
+.radioLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+}
+
+.checkboxGroup {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.checkbox {
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  cursor: pointer;
+  accent-color: var(--brand-saphelon-blue);
+}
+
+.checkboxText {
+  font-size: 13.5px;
+  line-height: 1.45;
+  color: var(--color-text-secondary);
+}
+
+.checkboxLink {
+  color: var(--brand-clarity-cyan);
+  text-decoration: underline;
+}
+
+.submitBtn {
+  margin-top: 12px;
+  width: 100%;
+}
+
+.feedbackBox {
+  padding: 24px;
+  border-radius: var(--radius-lg);
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.successBox {
+  background: rgba(27, 224, 253, 0.08);
+  border: 1px solid rgba(27, 224, 253, 0.3);
+}
+
+.successTitle {
+  font-size: 18px;
+  font-weight: var(--font-weight-bold);
+  color: var(--brand-clarity-cyan);
+  margin: 0;
+}
+
+.successText {
+  font-size: 14.5px;
+  line-height: var(--line-height-body);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.errorBox {
+  background: rgba(255, 75, 75, 0.08);
+  border: 1px solid rgba(255, 75, 75, 0.3);
+}
+
+.errorText {
+  font-size: 14.5px;
+  color: #FF8585;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .formGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .formCard {
+    padding: 32px 20px;
+  }
+}

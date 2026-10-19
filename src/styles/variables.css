@@ -1,0 +1,393 @@
+/**
+ * Design Tokens & CSS Variables for Saphelon
+ * Extracted with 100% fidelity from Saphelon design guidelines and prototypes.
+ * Includes colors, gradients, typography, spacing, border radii, shadows, and breakpoints.
+ */
+
+:root {
+  /* ==========================================================================
+     1. Brand Palette Tokens
+     ========================================================================== */
+  --brand-clarity-cyan: #1BE0FD;
+  --brand-cyan-mid: #0BC8FC;
+  --brand-cyan-deep: #0097FC;
+  --brand-blue-bright: #0188FF;
+  --brand-saphelon-blue: #004EFC;
+  --brand-indigo: #4D38FC;
+  --brand-innovation-violet: #A416FC;
+  --brand-accent-glow: #CC7AFC;
+
+  --brand-white: #FFFFFF;
+  --brand-ink: #0B1020;
+  --brand-slate: #4A5268;
+  --brand-slate-light: #7D88A6;
+  --brand-slate-dark: #2A3248;
+  --brand-mist: #F4F6FA;
+  --brand-border-light: #E3E7EF;
+
+  --brand-contour-bg: #070B18;
+  --brand-card-dark-bg: #0E1428;
+  --brand-section-dark-bg: #0A1022;
+  --brand-footer-dark-bg: #05080F;
+  --brand-border-dark: #1E2742;
+
+  --brand-text-dark-primary: #F5F7FC;
+  --brand-text-dark-secondary: #B4BED6;
+  --brand-text-dark-muted: #A9B3CC;
+
+  /* ==========================================================================
+     2. Typography Tokens
+     ========================================================================== */
+  --font-family-primary: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+
+  --font-size-hero-title: clamp(44px, 6.6vw, 96px);
+  --font-size-section-title: clamp(30px, 3.4vw, 46px);
+  --font-size-cta-title: clamp(34px, 4.2vw, 58px);
+  --font-size-card-title: 21px;
+  --font-size-industry-title: 20px;
+  --font-size-approach-title: 19px;
+  --font-size-csv-step: 18px;
+  --font-size-body-lg: 19px;
+  --font-size-body-md: 17px;
+  --font-size-body-sm: 15px;
+  --font-size-nav-link: 14px;
+  --font-size-meta: 13px;
+  --font-size-overline: 12px;
+  --font-size-switcher: 12px;
+
+  --line-height-hero: 1.02;
+  --line-height-cta: 1.08;
+  --line-height-heading: 1.12;
+  --line-height-card: 1.25;
+  --line-height-subheading: 1.3;
+  --line-height-body: 1.6;
+  --line-height-body-relaxed: 1.65;
+  --line-height-single: 1;
+
+  --letter-spacing-tighter: -0.02em;
+  --letter-spacing-tight: -0.015em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.04em;
+  --letter-spacing-wider: 0.08em;
+  --letter-spacing-overline: 0.2em;
+  --letter-spacing-hero-overline: 0.24em;
+  --letter-spacing-tagline: 0.34em;
+
+  /* ==========================================================================
+     3. Layout & Spacing Tokens
+     ========================================================================== */
+  --max-content-width: 1240px;
+  --max-hero-width: 920px;
+  --max-width-subtitle: 600px;
+  --max-width-intro: 620px;
+  --max-width-csv: 540px;
+
+  --section-padding-y: clamp(72px, 7vw, 112px);
+  --spacing-section-y: clamp(72px, 7vw, 112px);
+  --cta-padding-y: clamp(80px, 8vw, 120px);
+  --spacing-cta-y: clamp(80px, 8vw, 120px);
+  --spacing-footer-y: 72px 0 32px;
+  --spacing-container-x: 32px;
+  --spacing-container-x-mobile: 20px;
+
+  /* ==========================================================================
+     4. Border Radii Tokens
+     ========================================================================== */
+  --radius-xs: 6px;
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 16px;
+  --radius-2xl: 18px;
+  --radius-3xl: 20px;
+  --radius-pill: 999px;
+  --radius-full: 50%;
+
+  /* ==========================================================================
+     5. Shadows & Easing
+     ========================================================================== */
+  --shadow-floating: 0 6px 24px rgba(0, 0, 0, 0.18);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.2s ease;
+  --transition-theme: 0.25s ease;
+
+  /* ==========================================================================
+     6. Responsive Breakpoint Tokens (for CSS Module reference)
+     ========================================================================== */
+  --breakpoint-desktop: 1024px;
+  --breakpoint-tablet: 860px;
+  --breakpoint-mobile: 640px;
+}
+
+/* ==========================================================================
+   THEME 1: CONTOUR (Default Dark Mode)
+   ========================================================================== */
+:root,
+[data-theme='contour'] {
+  --color-page-bg: var(--brand-contour-bg);
+  --color-hero-bg: radial-gradient(38% 48% at 50% 50%, rgba(0, 78, 252, 0.45), rgba(0, 78, 252, 0) 75%), var(--brand-contour-bg);
+  --color-hero-scrim: radial-gradient(32% 38% at 50% 50%, rgba(7, 11, 24, 0.72), rgba(7, 11, 24, 0) 100%);
+  --color-hero-overline: var(--brand-clarity-cyan);
+  --color-hero-title: var(--brand-text-dark-primary);
+  --color-hero-accent: var(--brand-clarity-cyan);
+  --color-hero-subtitle: var(--brand-text-dark-secondary);
+
+  --color-text-primary: var(--brand-text-dark-primary);
+  --color-text-secondary: var(--brand-text-dark-secondary);
+  --color-text-muted: var(--brand-text-dark-muted);
+  --color-text-highlight: var(--brand-clarity-cyan);
+
+  --color-nav-wordmark: var(--brand-text-dark-primary);
+  --color-nav-link: var(--brand-text-dark-secondary);
+  --color-nav-link-hover: var(--brand-text-dark-primary);
+  --color-nav-link-active: var(--brand-text-dark-primary);
+
+  --color-services-bg: var(--brand-contour-bg);
+  --color-card-bg: var(--brand-card-dark-bg);
+  --color-card-border: var(--brand-border-dark);
+  --color-card-hover-border: var(--brand-saphelon-blue);
+  --color-card-title: var(--brand-text-dark-primary);
+  --color-card-desc: var(--brand-text-dark-secondary);
+  --color-card-number: var(--brand-clarity-cyan);
+  --color-card-link: var(--brand-clarity-cyan);
+
+  --color-csv-bg: var(--brand-section-dark-bg);
+  --color-csv-card-bg: var(--brand-card-dark-bg);
+  --color-csv-card-border: var(--brand-border-dark);
+  --color-csv-number: var(--brand-clarity-cyan);
+  --color-csv-item-text: var(--brand-text-dark-primary);
+
+  --color-industries-bg: var(--brand-contour-bg);
+  --color-industry-card-border: var(--brand-border-dark);
+  --color-industry-card-hover-border: var(--brand-saphelon-blue);
+  --color-industry-title: var(--brand-text-dark-primary);
+  --color-industry-desc: var(--brand-text-dark-secondary);
+
+  --color-approach-bg: var(--brand-ink);
+  --color-approach-border: rgba(255, 255, 255, 0.06);
+  --color-approach-overline: var(--brand-clarity-cyan);
+  --color-approach-title: var(--brand-white);
+  --color-approach-desc: #C9D2E8;
+  --color-approach-number: var(--brand-clarity-cyan);
+  --color-approach-circle-border: rgba(255, 255, 255, 0.35);
+  --color-approach-line: rgba(255, 255, 255, 0.18);
+  --color-approach-step-title: var(--brand-white);
+  --color-approach-step-desc: #C9D2E8;
+  --color-approach-btn-border: rgba(255, 255, 255, 0.4);
+  --color-approach-btn-text: var(--brand-white);
+
+  --color-cta-bg: var(--brand-section-dark-bg);
+  --color-cta-watermark-opacity: 0.18;
+  --color-cta-overline: var(--brand-clarity-cyan);
+  --color-cta-title: var(--brand-text-dark-primary);
+  --color-cta-desc: var(--brand-text-dark-secondary);
+
+  --color-footer-bg: var(--brand-footer-dark-bg);
+  --color-footer-title: var(--brand-white);
+  --color-footer-text: var(--brand-text-dark-muted);
+  --color-footer-border: rgba(255, 255, 255, 0.1);
+  --color-footer-legal: var(--brand-slate-light);
+
+  --color-section-alt-bg: var(--brand-card-dark-bg);
+  --color-input-bg: rgba(255, 255, 255, 0.03);
+  --color-input-border: var(--brand-border-dark);
+  --color-dropdown-hover-bg: rgba(255, 255, 255, 0.05);
+
+  --color-btn-primary-bg: var(--brand-saphelon-blue);
+  --color-btn-primary-text: var(--brand-white);
+  --color-btn-primary-hover-bg: #1B5FFD;
+
+  --color-btn-secondary-border: rgba(245, 247, 252, 0.3);
+  --color-btn-secondary-text: var(--brand-text-dark-primary);
+  --color-btn-secondary-hover-border: var(--brand-text-dark-primary);
+
+  --color-switcher-bg: rgba(7, 11, 24, 0.82);
+  --color-switcher-border: rgba(245, 247, 252, 0.22);
+  --color-switcher-active-bg: var(--brand-text-dark-primary);
+  --color-switcher-active-text: var(--brand-contour-bg);
+  --color-switcher-inactive-text: var(--brand-text-dark-secondary);
+}
+
+/* ==========================================================================
+   THEME 2: MIST (Clean Light Mode)
+   ========================================================================== */
+[data-theme='mist'] {
+  --color-page-bg: var(--brand-white);
+  --color-hero-bg: linear-gradient(135deg, #FFFFFF 0%, #F4F6FA 55%, #E9EEFA 100%);
+  --color-hero-scrim: transparent;
+  --color-hero-overline: var(--brand-saphelon-blue);
+  --color-hero-title: var(--brand-ink);
+  --color-hero-accent: var(--brand-saphelon-blue);
+  --color-hero-subtitle: var(--brand-slate-dark);
+
+  --color-text-primary: var(--brand-ink);
+  --color-text-secondary: var(--brand-slate-dark);
+  --color-text-muted: var(--brand-slate);
+  --color-text-highlight: var(--brand-saphelon-blue);
+
+  --color-nav-wordmark: var(--brand-ink);
+  --color-nav-link: var(--brand-slate-dark);
+  --color-nav-link-hover: var(--brand-ink);
+  --color-nav-link-active: var(--brand-ink);
+
+  --color-services-bg: var(--brand-white);
+  --color-section-alt-bg: var(--brand-mist);
+  --color-card-bg: var(--brand-white);
+  --color-card-border: var(--brand-border-light);
+  --color-card-hover-border: var(--brand-saphelon-blue);
+  --color-card-title: var(--brand-ink);
+  --color-card-desc: var(--brand-slate-dark);
+  --color-card-number: var(--brand-saphelon-blue);
+  --color-card-link: var(--brand-saphelon-blue);
+
+  --color-csv-bg: var(--brand-mist);
+  --color-csv-card-bg: var(--brand-white);
+  --color-csv-card-border: var(--brand-border-light);
+  --color-csv-number: var(--brand-saphelon-blue);
+  --color-csv-item-text: var(--brand-ink);
+
+  --color-industries-bg: var(--brand-white);
+  --color-industry-card-border: var(--brand-border-light);
+  --color-industry-card-hover-border: var(--brand-saphelon-blue);
+  --color-industry-title: var(--brand-ink);
+  --color-industry-desc: var(--brand-slate-dark);
+
+  --color-approach-bg: var(--brand-ink);
+  --color-approach-border: rgba(255, 255, 255, 0.06);
+  --color-approach-overline: var(--brand-clarity-cyan);
+  --color-approach-title: var(--brand-white);
+  --color-approach-desc: #C9D2E8;
+  --color-approach-number: var(--brand-clarity-cyan);
+  --color-approach-circle-border: rgba(255, 255, 255, 0.35);
+  --color-approach-line: rgba(255, 255, 255, 0.18);
+  --color-approach-step-title: var(--brand-white);
+  --color-approach-step-desc: #C9D2E8;
+  --color-approach-btn-border: rgba(255, 255, 255, 0.4);
+  --color-approach-btn-text: var(--brand-white);
+
+  --color-cta-bg: var(--brand-mist);
+  --color-cta-watermark-opacity: 0.18;
+  --color-cta-overline: var(--brand-saphelon-blue);
+  --color-cta-title: var(--brand-ink);
+  --color-cta-desc: var(--brand-slate-dark);
+
+  --color-footer-bg: var(--brand-footer-dark-bg);
+  --color-footer-title: var(--brand-white);
+  --color-footer-text: var(--brand-text-dark-muted);
+  --color-footer-border: rgba(255, 255, 255, 0.1);
+  --color-footer-legal: var(--brand-slate-light);
+
+  --color-input-bg: #FFFFFF;
+  --color-input-border: var(--brand-border-light);
+  --color-dropdown-hover-bg: rgba(0, 78, 252, 0.06);
+
+  --color-btn-primary-bg: var(--brand-saphelon-blue);
+  --color-btn-primary-text: var(--brand-white);
+  --color-btn-primary-hover-bg: #0040D4;
+
+  --color-btn-secondary-border: rgba(11, 16, 32, 0.3);
+  --color-btn-secondary-text: var(--brand-ink);
+  --color-btn-secondary-hover-border: var(--brand-ink);
+
+  --color-switcher-bg: rgba(255, 255, 255, 0.92);
+  --color-switcher-border: var(--brand-border-light);
+  --color-switcher-active-bg: var(--brand-ink);
+  --color-switcher-active-text: var(--brand-white);
+  --color-switcher-inactive-text: var(--brand-slate-dark);
+}
+
+/* ==========================================================================
+   THEME 3: BLUE (Brand Signature Mode)
+   ========================================================================== */
+[data-theme='blue'] {
+  --color-page-bg: var(--brand-white);
+  --color-hero-bg: var(--brand-saphelon-blue);
+  --color-hero-scrim: transparent;
+  --color-hero-overline: #BDF5FF;
+  --color-hero-title: var(--brand-text-dark-primary);
+  --color-hero-accent: #BDF5FF;
+  --color-hero-subtitle: #E6ECFF;
+
+  --color-text-primary: var(--brand-ink);
+  --color-text-secondary: var(--brand-slate-dark);
+  --color-text-muted: var(--brand-slate);
+  --color-text-highlight: var(--brand-saphelon-blue);
+
+  --color-nav-wordmark: var(--brand-text-dark-primary);
+  --color-nav-link: #E6ECFF;
+  --color-nav-link-hover: var(--brand-text-dark-primary);
+  --color-nav-link-active: var(--brand-text-dark-primary);
+
+  --color-services-bg: var(--brand-white);
+  --color-section-alt-bg: var(--brand-mist);
+  --color-card-bg: var(--brand-white);
+  --color-card-border: var(--brand-border-light);
+  --color-card-hover-border: var(--brand-saphelon-blue);
+  --color-card-title: var(--brand-ink);
+  --color-card-desc: var(--brand-slate-dark);
+  --color-card-number: var(--brand-saphelon-blue);
+  --color-card-link: var(--brand-saphelon-blue);
+
+  --color-csv-bg: var(--brand-mist);
+  --color-csv-card-bg: var(--brand-white);
+  --color-csv-card-border: var(--brand-border-light);
+  --color-csv-number: var(--brand-saphelon-blue);
+  --color-csv-item-text: var(--brand-ink);
+
+  --color-industries-bg: var(--brand-white);
+  --color-industry-card-border: var(--brand-border-light);
+  --color-industry-card-hover-border: var(--brand-saphelon-blue);
+  --color-industry-title: var(--brand-ink);
+  --color-industry-desc: var(--brand-slate-dark);
+
+  --color-approach-bg: var(--brand-saphelon-blue);
+  --color-approach-border: rgba(255, 255, 255, 0);
+  --color-approach-overline: #BDF5FF;
+  --color-approach-title: var(--brand-white);
+  --color-approach-desc: #E6ECFF;
+  --color-approach-number: #BDF5FF;
+  --color-approach-circle-border: rgba(255, 255, 255, 0.35);
+  --color-approach-line: rgba(255, 255, 255, 0.18);
+  --color-approach-step-title: var(--brand-white);
+  --color-approach-step-desc: #E6ECFF;
+  --color-approach-btn-border: rgba(255, 255, 255, 0.4);
+  --color-approach-btn-text: var(--brand-white);
+
+  --color-cta-bg: var(--brand-mist);
+  --color-cta-watermark-opacity: 0.18;
+  --color-cta-overline: var(--brand-saphelon-blue);
+  --color-cta-title: var(--brand-ink);
+  --color-cta-desc: var(--brand-slate-dark);
+
+  --color-footer-bg: var(--brand-footer-dark-bg);
+  --color-footer-title: var(--brand-white);
+  --color-footer-text: var(--brand-text-dark-muted);
+  --color-footer-border: rgba(255, 255, 255, 0.1);
+  --color-footer-legal: var(--brand-slate-light);
+
+  --color-input-bg: #FFFFFF;
+  --color-input-border: var(--brand-border-light);
+  --color-dropdown-hover-bg: rgba(0, 78, 252, 0.06);
+
+  --color-btn-primary-bg: var(--brand-white);
+  --color-btn-primary-text: var(--brand-saphelon-blue);
+  --color-btn-primary-hover-bg: #F0F4FF;
+
+  --color-btn-secondary-border: rgba(255, 255, 255, 0.55);
+  --color-btn-secondary-text: var(--brand-text-dark-primary);
+  --color-btn-secondary-hover-border: var(--brand-white);
+
+  --color-switcher-bg: rgba(0, 58, 190, 0.85);
+  --color-switcher-border: rgba(255, 255, 255, 0.4);
+  --color-switcher-active-bg: var(--brand-white);
+  --color-switcher-active-text: var(--brand-saphelon-blue);
+  --color-switcher-inactive-text: #E6ECFF;
+}

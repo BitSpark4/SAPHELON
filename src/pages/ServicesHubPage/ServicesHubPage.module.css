@@ -1,0 +1,302 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-page-bg);
+}
+
+.section {
+  padding: var(--spacing-section-y) 0;
+  border-bottom: 1px solid var(--color-card-border);
+}
+
+.altSection {
+  background-color: var(--color-section-alt-bg);
+  padding: var(--spacing-section-y) 0;
+  border-bottom: 1px solid var(--color-card-border);
+  transition: background-color 0.25s ease;
+}
+
+.container {
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-container-x);
+  box-sizing: border-box;
+}
+
+.sectionHeader {
+  margin-bottom: 56px;
+  max-width: 680px;
+}
+
+.sectionOverline {
+  font-size: var(--font-size-overline);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-overline);
+  color: var(--color-text-highlight);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  transition: color 0.25s ease;
+}
+
+.sectionTitle {
+  font-size: var(--font-size-section-title);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-heading);
+  letter-spacing: var(--letter-spacing-tight);
+  color: var(--color-text-primary);
+  margin: 0 0 16px 0;
+  transition: color 0.25s ease;
+}
+
+.sectionSubtitle {
+  font-size: var(--font-size-body-md);
+  line-height: var(--line-height-body);
+  color: var(--color-text-secondary);
+  margin: 0;
+  transition: color 0.25s ease;
+}
+
+/* Service Registry Cards */
+.servicesStack {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.serviceCard {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-2xl);
+  padding: 32px 36px;
+  display: grid;
+  grid-template-columns: 240px 1.4fr 1.6fr auto;
+  gap: 36px;
+  align-items: center;
+  transition: transform var(--transition-normal), border-color var(--transition-normal), background-color 0.25s ease;
+}
+
+.serviceCard:hover {
+  transform: translateY(-4px);
+  border-color: var(--brand-saphelon-blue);
+}
+
+.cardImageCol {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 11;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  border: 1px solid var(--color-card-border);
+  background: var(--color-section-alt-bg);
+}
+
+.registryImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.serviceCard:hover .registryImg {
+  transform: scale(1.06);
+}
+
+.imageOverlayBar {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cardNumber {
+  font-size: 13.5px;
+  font-weight: var(--font-weight-extrabold);
+  color: #FFFFFF;
+  background: rgba(11, 16, 32, 0.8);
+  backdrop-filter: blur(8px);
+  padding: 4px 10px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  letter-spacing: 0.08em;
+}
+
+.cardMain {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cardTitle {
+  font-size: 22px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: color 0.25s ease;
+}
+
+.cardText {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+  margin: 0;
+  transition: color 0.25s ease;
+}
+
+.cardFeatures {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.featureItem {
+  font-size: 14px;
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.25s ease;
+}
+
+.featureBullet {
+  color: var(--color-text-highlight);
+  font-size: 12px;
+  transition: color 0.25s ease;
+}
+
+/* Where to Start Matrix */
+.matrixGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+.matrixCard {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-xl);
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+  transition: transform var(--transition-fast), border-color var(--transition-fast), background-color 0.25s ease;
+}
+
+.matrixCard:hover {
+  transform: translateY(-2px);
+  border-color: var(--brand-saphelon-blue);
+}
+
+.matrixTrigger {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+  transition: color 0.25s ease;
+}
+
+.matrixLink {
+  font-size: 16px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-highlight);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.25s ease;
+}
+
+.matrixLink:hover {
+  text-decoration: underline;
+}
+
+/* Engagement Models */
+.engagementGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.engagementCard {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-xl);
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.engagementTitle {
+  font-size: 19px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin: 0;
+  transition: color 0.25s ease;
+}
+
+.engagementDesc {
+  font-size: 14.5px;
+  line-height: var(--line-height-body);
+  color: var(--color-text-secondary);
+  margin: 0;
+  transition: color 0.25s ease;
+}
+
+/* CTA */
+.ctaSection {
+  padding: var(--spacing-cta-y) 0;
+  background: var(--color-cta-bg);
+  text-align: center;
+  border-top: 1px solid var(--color-card-border);
+  transition: background-color 0.25s ease;
+}
+
+.ctaContainer {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-container-x);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.ctaTitle {
+  font-size: var(--font-size-cta-title);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-cta);
+  letter-spacing: var(--letter-spacing-tighter);
+  color: var(--color-cta-title);
+  margin: 0;
+  transition: color 0.25s ease;
+}
+
+@media (max-width: 1024px) {
+  .serviceCard {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .cardImageCol {
+    max-height: 260px;
+    aspect-ratio: 16 / 9;
+  }
+}
+
+@media (max-width: 860px) {
+  .container {
+    padding: 0 var(--spacing-container-x-mobile);
+  }
+}

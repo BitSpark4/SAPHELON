@@ -1,0 +1,364 @@
+/**
+ * AnimatedServiceIcon component styles.
+ * Provides the "approach" entrance motion, continuous subtle micro-animations,
+ * card hover states, and theme-adaptive coloring.
+ */
+
+.iconWrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-lg);
+  background: var(--color-section-alt-bg);
+  border: 1px solid var(--color-card-border);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  flex-shrink: 0;
+  overflow: visible;
+  transition: transform var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal);
+  color: var(--color-text-primary);
+}
+
+/* Floating glow backdrop behind icon */
+.iconGlow {
+  position: absolute;
+  inset: -6px;
+  border-radius: inherit;
+  background: radial-gradient(circle, var(--color-text-highlight) 0%, transparent 70%);
+  opacity: 0.15;
+  filter: blur(8px);
+  pointer-events: none;
+  transition: opacity var(--transition-normal);
+}
+
+/* The "Approach" entrance animation triggered when in view */
+.approachIn {
+  animation: iconApproach 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes iconApproach {
+  0% {
+    opacity: 0;
+    transform: translateY(18px) scale(0.82);
+    filter: blur(4px);
+  }
+  65% {
+    opacity: 1;
+    transform: translateY(-3px) scale(1.03);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* Hover state enhancement */
+:global(.service-card):hover .iconWrapper,
+.iconWrapper:hover {
+  transform: translateY(-4px) scale(1.06);
+  border-color: var(--color-card-hover-border);
+  box-shadow: 0 8px 24px rgba(0, 78, 252, 0.22);
+}
+
+:global(.service-card):hover .iconGlow,
+.iconWrapper:hover .iconGlow {
+  opacity: 0.4;
+}
+
+/* SVG Vector base */
+.svgIcon {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* ==========================================================================
+   1. Industrial Automation Animations (Rotating Gear + Robot Arm Laser)
+   ========================================================================== */
+.gearRotate {
+  transform-origin: 20px 18px;
+  animation: rotateGear 12s linear infinite;
+}
+
+:global(.service-card):hover .gearRotate,
+.iconWrapper:hover .gearRotate {
+  animation-duration: 4s;
+}
+
+@keyframes rotateGear {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.laserPulse {
+  animation: laserGlow 1.8s ease-in-out infinite;
+}
+
+@keyframes laserGlow {
+  0%, 100% {
+    opacity: 0.3;
+    r: 2.5;
+  }
+  50% {
+    opacity: 1;
+    r: 4.5;
+    filter: drop-shadow(0 0 6px var(--color-text-highlight));
+  }
+}
+
+.armTilt {
+  transform-origin: 32px 42px;
+  animation: armSway 4s ease-in-out infinite;
+}
+
+@keyframes armSway {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-4deg);
+  }
+}
+
+/* ==========================================================================
+   2. IIoT & Industry 4.0 Animations (Radiating Waves + Data Flow)
+   ========================================================================== */
+.wave1 {
+  animation: wavePulse 2.4s ease-out infinite;
+  transform-origin: 32px 14px;
+}
+
+.wave2 {
+  animation: wavePulse 2.4s ease-out 0.8s infinite;
+  transform-origin: 32px 14px;
+}
+
+.wave3 {
+  animation: wavePulse 2.4s ease-out 1.6s infinite;
+  transform-origin: 32px 14px;
+}
+
+@keyframes wavePulse {
+  0% {
+    opacity: 0.1;
+    stroke-width: 1.5;
+    transform: scale(0.92);
+  }
+  40% {
+    opacity: 1;
+    stroke-width: 2.5;
+  }
+  100% {
+    opacity: 0;
+    stroke-width: 1;
+    transform: scale(1.15);
+  }
+}
+
+.dataPacket {
+  animation: packetTravel 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes packetTravel {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  30% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+
+.beaconBlink {
+  animation: beaconFlash 1.6s ease-in-out infinite;
+}
+
+@keyframes beaconFlash {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+    filter: drop-shadow(0 0 4px var(--color-text-highlight));
+  }
+}
+
+/* ==========================================================================
+   3. Artificial Intelligence Animations (Synapse Pulse + Neural Breathing)
+   ========================================================================== */
+.aiCore {
+  animation: coreBreathe 3s ease-in-out infinite;
+  transform-origin: 32px 32px;
+}
+
+@keyframes coreBreathe {
+  0%, 100% {
+    transform: scale(0.96);
+    filter: drop-shadow(0 0 2px var(--brand-indigo));
+  }
+  50% {
+    transform: scale(1.04);
+    filter: drop-shadow(0 0 10px var(--brand-innovation-violet));
+  }
+}
+
+.synapsePulse {
+  stroke-dasharray: 4 4;
+  animation: synapseFlow 3s linear infinite;
+}
+
+@keyframes synapseFlow {
+  from {
+    stroke-dashoffset: 16;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.nodeFloatA {
+  animation: nodeFloat 3.5s ease-in-out infinite;
+}
+
+.nodeFloatB {
+  animation: nodeFloat 3.5s ease-in-out 1.75s infinite;
+}
+
+@keyframes nodeFloat {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(-3px);
+    opacity: 1;
+  }
+}
+
+/* ==========================================================================
+   4. Software Solutions Animations (Brackets Expand + Typing Cursor)
+   ========================================================================== */
+.bracketLeft {
+  animation: bracketShiftLeft 3s ease-in-out infinite;
+}
+
+.bracketRight {
+  animation: bracketShiftRight 3s ease-in-out infinite;
+}
+
+@keyframes bracketShiftLeft {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-2.5px);
+  }
+}
+
+@keyframes bracketShiftRight {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(2.5px);
+  }
+}
+
+.cursorBlink {
+  animation: cursorFlash 1s steps(2, start) infinite;
+}
+
+@keyframes cursorFlash {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* ==========================================================================
+   5. Pharmaceutical & CSV Animations (Checkmark Drawing + Shield Scan)
+   ========================================================================== */
+.checkmarkDraw {
+  stroke-dasharray: 32;
+  stroke-dashoffset: 32;
+  animation: checkDraw 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.3s, checkGlow 2.5s ease-in-out infinite 1.8s;
+}
+
+@keyframes checkDraw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes checkGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 1px var(--color-text-highlight));
+  }
+  50% {
+    filter: drop-shadow(0 0 6px var(--color-text-highlight));
+  }
+}
+
+.auditBeam {
+  animation: scanSweep 3.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes scanSweep {
+  0% {
+    transform: translateY(-12px);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.8;
+  }
+  80% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(24px);
+    opacity: 0;
+  }
+}
+
+.sparklePulse {
+  animation: sparkleTwinkle 2.2s ease-in-out infinite;
+  transform-origin: 46px 14px;
+}
+
+@keyframes sparkleTwinkle {
+  0%, 100% {
+    transform: scale(0.7) rotate(0deg);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1.25) rotate(45deg);
+    opacity: 1;
+    filter: drop-shadow(0 0 4px var(--color-text-highlight));
+  }
+}
+
+/* Custom external image icon fallback (e.g., Flaticon GIF/SVG) */
+.customImg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: inherit;
+}

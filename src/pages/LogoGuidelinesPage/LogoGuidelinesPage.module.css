@@ -1,0 +1,203 @@
+.desk {
+  min-height: 100vh;
+  background: #E9E9E9;
+  font-family: var(--font-family-primary);
+  color: var(--brand-ink);
+  padding: 40px 20px 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.topBar {
+  max-width: 860px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--brand-saphelon-blue);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.backLink:hover {
+  opacity: 0.8;
+}
+
+.pageCard {
+  width: 100%;
+  max-width: 860px;
+  min-height: 1100px;
+  background: #FFFFFF;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  padding: 56px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.darkPage {
+  background: var(--brand-ink);
+  color: #FFFFFF;
+}
+
+.pageHeader {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: #9AA3B8;
+  margin-bottom: 24px;
+}
+
+.centerHero {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+
+.coverWordmark {
+  font-weight: 700;
+  font-size: 60px;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-align: center;
+}
+
+.coverTagline {
+  font-weight: 700;
+  font-size: 12.6px;
+  letter-spacing: 0.34em;
+  color: #9AA3B8;
+  text-align: center;
+}
+
+.coverFooter {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.coverTitle {
+  margin: 0;
+  font-weight: 700;
+  font-size: 34px;
+  line-height: 1.15;
+}
+
+.coverMeta {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #2A3248;
+  padding-top: 16px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #9AA3B8;
+}
+
+.sectionOverline {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--brand-saphelon-blue);
+  margin-bottom: 8px;
+}
+
+.pageTitle {
+  margin: 0 0 12px;
+  font-weight: 700;
+  font-size: 34px;
+  line-height: 1.15;
+}
+
+.pageDescription {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--brand-slate-dark);
+}
+
+.pointsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px 32px;
+  border-top: 1px solid var(--brand-border-light);
+  padding-top: 28px;
+  margin-top: 28px;
+}
+
+.pointItem {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pointLetter {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--brand-slate);
+}
+
+.pointTitle {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.pointDesc {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--brand-slate-dark);
+}
+
+.wordmarkBox {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: var(--brand-mist);
+  border-radius: 14px;
+  padding: 22px 24px;
+  margin-top: 24px;
+}
+
+.pageFooter {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid var(--brand-border-light);
+  padding-top: 16px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--brand-slate);
+}
+
+@media (max-width: 640px) {
+  .pageCard {
+    padding: 32px 20px;
+    min-height: auto;
+  }
+
+  .pointsGrid {
+    grid-template-columns: 1fr;
+  }
+}

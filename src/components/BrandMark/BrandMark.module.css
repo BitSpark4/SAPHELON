@@ -1,0 +1,9 @@
+.mark {
+  display: block;
+  flex: none;
+  overflow: visible;
+}
+
+.mono {
+  fill: currentColor;
+}

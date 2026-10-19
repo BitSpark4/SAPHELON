@@ -1,0 +1,39 @@
+.switcher {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 50;
+  display: flex;
+  gap: 2px;
+  padding: 4px;
+  border-radius: 999px;
+  border: 1px solid var(--color-switcher-border);
+  background: var(--color-switcher-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.18);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.button {
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-family-primary);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--color-switcher-inactive-text);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.button:hover {
+  opacity: 0.88;
+}
+
+.active {
+  background: var(--color-switcher-active-bg);
+  color: var(--color-switcher-active-text);
+}

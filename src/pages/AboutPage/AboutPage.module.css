@@ -1,0 +1,317 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-page-bg);
+}
+
+.section {
+  padding: var(--spacing-section-y) 0;
+  border-bottom: 1px solid var(--color-card-border);
+}
+
+.altSection {
+  background-color: var(--color-section-alt-bg);
+  padding: var(--spacing-section-y) 0;
+  border-bottom: 1px solid var(--color-card-border);
+  transition: background-color 0.25s ease;
+}
+
+.container {
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-container-x);
+  box-sizing: border-box;
+}
+
+.sectionHeader {
+  margin-bottom: 48px;
+  max-width: 680px;
+}
+
+.sectionTitle {
+  font-size: var(--font-size-section-title);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-heading);
+  letter-spacing: var(--letter-spacing-tight);
+  color: var(--color-text-primary);
+  margin: 0 0 16px 0;
+  transition: color 0.25s ease;
+}
+
+.sectionOverline {
+  font-size: var(--font-size-overline);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-overline);
+  color: var(--color-text-highlight);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  transition: color 0.25s ease;
+}
+
+.bodyText {
+  font-size: var(--font-size-body-lg);
+  line-height: var(--line-height-body-relaxed);
+  color: var(--color-text-secondary);
+  margin: 0 0 20px 0;
+  transition: color 0.25s ease;
+}
+
+/* Overview Two-Column with Lab Image */
+.overviewGrid {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.overviewText {
+  display: flex;
+  flex-direction: column;
+}
+
+.overviewImageWrap {
+  position: relative;
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  border: 1px solid var(--color-card-border);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.22);
+  background: var(--color-card-bg);
+}
+
+.overviewImg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 16 / 10;
+  transition: transform 0.5s ease;
+}
+
+.overviewImageWrap:hover .overviewImg {
+  transform: scale(1.025);
+}
+
+.overviewCaption {
+  padding: 16px 20px;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+  background: var(--color-card-bg);
+  border-top: 1px solid var(--color-card-border);
+}
+
+.highlightsRow {
+  display: flex;
+  gap: 16px;
+  margin-top: 28px;
+  flex-wrap: wrap;
+}
+
+.highlightPill {
+  display: flex;
+  flex-direction: column;
+  padding: 14px 20px;
+  border-radius: var(--radius-lg);
+  background: var(--color-section-alt-bg);
+  border: 1px solid var(--color-card-border);
+  min-width: 120px;
+}
+
+.highlightNum {
+  font-size: 22px;
+  font-weight: var(--font-weight-extrabold);
+  color: var(--color-text-highlight);
+  line-height: 1.2;
+}
+
+.highlightLabel {
+  font-size: 12px;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-top: 4px;
+}
+
+@media (max-width: 960px) {
+  .overviewGrid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+}
+
+/* Mission & Vision Grid */
+.missionVisionGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+.missionCard {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-card-border);
+  border-top: 4px solid var(--color-text-highlight);
+  border-radius: var(--radius-xl);
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.visionCard {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-card-border);
+  border-top: 4px solid var(--brand-saphelon-blue);
+  border-radius: var(--radius-xl);
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.cardLabel {
+  font-size: var(--font-size-overline);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-overline);
+  text-transform: uppercase;
+  color: var(--color-text-highlight);
+  transition: color 0.25s ease;
+}
+
+.cardText {
+  font-size: 18px;
+  line-height: var(--line-height-body);
+  color: var(--color-text-primary);
+  margin: 0;
+  transition: color 0.25s ease;
+}
+
+/* Values Grid */
+.valuesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.valueCard {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-xl);
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: transform var(--transition-normal), border-color var(--transition-normal), background-color 0.25s ease;
+}
+
+.valueCard:hover {
+  transform: translateY(-4px);
+  border-color: var(--brand-saphelon-blue);
+}
+
+.valueNumber {
+  font-size: 15px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-highlight);
+  transition: color 0.25s ease;
+}
+
+.valueTitle {
+  font-size: 20px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin: 0;
+  transition: color 0.25s ease;
+}
+
+.valueDesc {
+  font-size: 14.5px;
+  line-height: var(--line-height-body);
+  color: var(--color-text-secondary);
+  margin: 0;
+  transition: color 0.25s ease;
+}
+
+/* Name and Mark Section */
+.markLayout {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.markGraphicWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-2xl);
+  padding: 48px;
+  position: relative;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.markAngleLabel {
+  margin-top: 20px;
+  font-size: var(--font-size-meta);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.1em;
+  color: var(--color-text-highlight);
+  text-transform: uppercase;
+  transition: color 0.25s ease;
+}
+
+/* Leadership Section */
+.leadershipBox {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-xl);
+  padding: 36px 32px;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+/* CTA */
+.ctaSection {
+  padding: var(--spacing-cta-y) 0;
+  background: var(--color-cta-bg);
+  text-align: center;
+  border-top: 1px solid var(--color-card-border);
+  transition: background-color 0.25s ease;
+}
+
+.ctaContainer {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-container-x);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.ctaTitle {
+  font-size: var(--font-size-cta-title);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-cta);
+  letter-spacing: var(--letter-spacing-tighter);
+  color: var(--color-cta-title);
+  margin: 0;
+  transition: color 0.25s ease;
+}
+
+@media (max-width: 860px) {
+  .missionVisionGrid,
+  .markLayout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .container {
+    padding: 0 var(--spacing-container-x-mobile);
+  }
+}

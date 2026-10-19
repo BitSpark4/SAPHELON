@@ -1,0 +1,235 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-page-bg);
+}
+
+.section {
+  padding: var(--spacing-section-y) 0;
+  border-bottom: 1px solid var(--color-card-border);
+}
+
+.container {
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-container-x);
+  box-sizing: border-box;
+}
+
+.sectorList {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.sectorCard {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-2xl);
+  padding: 44px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  transition: border-color var(--transition-normal);
+}
+
+.sectorCard:hover {
+  border-color: var(--brand-saphelon-blue);
+}
+
+.sectorImageBanner {
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  border: 1px solid var(--color-card-border);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.16);
+  max-height: 280px;
+  background: var(--color-section-alt-bg);
+}
+
+.sectorImg {
+  width: 100%;
+  height: 100%;
+  max-height: 280px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.sectorCard:hover .sectorImg {
+  transform: scale(1.025);
+}
+
+.sectorImageBadge {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(11, 16, 32, 0.82);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: var(--font-weight-semibold);
+  color: #FFFFFF;
+}
+
+.badgeDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--brand-clarity-cyan);
+  box-shadow: 0 0 8px var(--brand-clarity-cyan);
+}
+
+.sectorHeader {
+  border-bottom: 1px solid var(--color-card-border);
+  padding-bottom: 20px;
+}
+
+.sectorTitle {
+  font-size: 26px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin: 0 0 10px 0;
+}
+
+.sectorIntro {
+  font-size: var(--font-size-body-md);
+  line-height: var(--line-height-body);
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.columnsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px;
+}
+
+.columnBox {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.columnHeading {
+  font-size: 16px;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-highlight);
+  margin: 0;
+  transition: color 0.25s ease;
+}
+
+.bulletList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.bulletItem {
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  transition: color 0.25s ease;
+}
+
+.bulletIcon {
+  color: var(--color-text-highlight);
+  font-weight: bold;
+  flex-shrink: 0;
+  margin-top: 1px;
+  transition: color 0.25s ease;
+}
+
+.servicesBar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-top: 16px;
+  border-top: 1px solid var(--color-card-border);
+}
+
+.servicesLabel {
+  font-size: 13px;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-right: 4px;
+}
+
+.serviceChip {
+  font-size: 12.5px;
+  font-weight: var(--font-weight-medium);
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  background: var(--color-section-alt-bg);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-card-border);
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* CTA */
+.ctaSection {
+  padding: var(--spacing-cta-y) 0;
+  background: var(--color-cta-bg);
+  text-align: center;
+  border-top: 1px solid var(--color-card-border);
+  transition: background-color 0.25s ease;
+}
+
+.ctaContainer {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-container-x);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.ctaTitle {
+  font-size: var(--font-size-cta-title);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-cta);
+  letter-spacing: var(--letter-spacing-tighter);
+  color: var(--color-cta-title);
+  margin: 0;
+  transition: color 0.25s ease;
+}
+
+.ctaText {
+  font-size: var(--font-size-body-lg);
+  line-height: var(--line-height-body);
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+@media (max-width: 860px) {
+  .columnsGrid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .sectorCard {
+    padding: 32px 24px;
+  }
+
+  .container {
+    padding: 0 var(--spacing-container-x-mobile);
+  }
+}

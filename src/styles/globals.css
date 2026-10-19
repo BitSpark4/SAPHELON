@@ -1,0 +1,5 @@
+/**
+ * Forwarding stylesheet ensuring backward compatibility between global.css and globals.css.
+ */
+
+@import './global.css';

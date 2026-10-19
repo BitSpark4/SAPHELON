@@ -1,0 +1,104 @@
+.section {
+  background: var(--color-services-bg);
+  padding: var(--section-padding-y, 112px) 0;
+  border-top: 1px solid var(--color-card-border);
+  border-bottom: 1px solid var(--color-card-border);
+  transition: background-color 0.25s ease;
+  position: relative;
+}
+
+.container {
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-container-x);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 620px;
+}
+
+.overline {
+  font-size: var(--font-size-overline);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-overline);
+  color: var(--color-text-highlight);
+  text-transform: uppercase;
+  transition: color 0.25s ease;
+}
+
+.title {
+  margin: 0;
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-section-title);
+  line-height: var(--line-height-heading);
+  letter-spacing: var(--letter-spacing-tight);
+  color: var(--color-text-primary);
+  text-wrap: balance;
+  transition: color 0.25s ease;
+}
+
+.subtitle {
+  margin: 0;
+  font-size: var(--font-size-body-md);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-body);
+  color: var(--color-text-secondary);
+  text-wrap: pretty;
+  transition: color 0.25s ease;
+}
+
+.exploreLink {
+  font-size: 15px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-highlight);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s ease, opacity 0.2s ease, transform 0.2s ease;
+}
+
+.exploreLink:hover {
+  opacity: 0.85;
+  transform: translateX(3px);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 0 var(--spacing-container-x-mobile);
+    gap: 36px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+}

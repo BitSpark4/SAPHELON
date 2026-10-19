@@ -1,0 +1,125 @@
+.hero {
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--color-hero-bg);
+  transition: background 0.3s ease;
+  border-bottom: 1px solid var(--color-card-border);
+}
+
+.ringsArt {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.scrim {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--color-hero-scrim);
+  pointer-events: none;
+}
+
+.markWatermark {
+  position: absolute;
+  right: -8%;
+  top: -14%;
+  height: 128%;
+  aspect-ratio: 1410 / 1800;
+  display: block;
+  pointer-events: none;
+}
+
+.markWatermarkMist {
+  opacity: 0.14;
+}
+
+.markWatermarkBlue {
+  opacity: 0.09;
+}
+
+.content {
+  position: relative;
+  max-width: 860px;
+  padding: 130px 24px 72px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 18px;
+  z-index: 2;
+}
+
+.overline {
+  font-size: var(--font-size-overline);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-hero-overline);
+  color: var(--color-hero-overline);
+  text-transform: uppercase;
+  margin-bottom: 0;
+  transition: color 0.25s ease;
+}
+
+.title {
+  margin: 0;
+  font-weight: var(--font-weight-extrabold);
+  font-size: clamp(38px, 4.4vw, 66px);
+  line-height: 1.1;
+  letter-spacing: var(--letter-spacing-tighter);
+  color: var(--color-hero-title);
+  text-wrap: balance;
+  transition: color 0.25s ease;
+}
+
+.accent {
+  color: var(--color-hero-accent);
+  transition: color 0.25s ease;
+}
+
+.subtitle {
+  margin: 0;
+  max-width: 620px;
+  font-size: var(--font-size-body-md);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-body);
+  color: var(--color-hero-subtitle);
+  text-wrap: pretty;
+  transition: color 0.25s ease;
+}
+
+.actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+@media (max-width: 640px) {
+  .hero {
+    min-height: 85vh;
+  }
+
+  .content {
+    padding: 110px 20px 60px;
+    gap: 16px;
+  }
+
+  .title {
+    font-size: clamp(32px, 8vw, 42px);
+  }
+
+  .subtitle {
+    font-size: 15.5px;
+  }
+}

@@ -1,0 +1,38 @@
+.card {
+  box-sizing: border-box;
+  transition: background-color var(--transition-theme), border-color var(--transition-theme), transform var(--transition-normal);
+}
+
+.default {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-xl);
+  padding: 30px 28px;
+}
+
+.stepList {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-csv-card-bg);
+  border: 1px solid var(--color-csv-card-border);
+  border-radius: var(--radius-2xl);
+  padding: 10px 30px;
+}
+
+.topBorder {
+  display: flex;
+  flex-direction: column;
+  border-top: 2px solid var(--color-industry-card-border);
+  padding-top: 24px;
+}
+
+.hoverable:hover {
+  border-color: var(--color-card-hover-border);
+  transform: translateY(-2px);
+}
+
+.topBorder.hoverable:hover {
+  border-top-color: var(--color-industry-card-hover-border);
+}
