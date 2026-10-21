@@ -1,0 +1,4 @@
+# Netlify SPA redirect rule
+# Rewrites all unmatched routes to index.html with a 200 OK status
+# Preserves static assets, images, and static files (__forms.html)
+/*    /index.html   200

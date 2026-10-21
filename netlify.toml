@@ -1,0 +1,13 @@
+# Netlify Configuration for SAPHELON Vite + TypeScript SPA
+# https://docs.netlify.com/configure-builds/file-based-configuration/
+
+[build]
+  publish = "dist"
+  command = "npm run build"
+
+# SPA Routing: rewrites all client-side routes to index.html with a 200 OK status
+# Physical files in dist (e.g. assets, images, __forms.html) are served directly
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
