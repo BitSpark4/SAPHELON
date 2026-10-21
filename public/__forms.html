@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>SAPHELON — Netlify Form Detection</title>
+  </head>
+  <body>
+    <!--
+      Static form definition for Netlify Forms bot detection in client-side rendered (Vite/React) apps.
+      This file is copied to dist/__forms.html during build.
+      Reference: https://docs.netlify.com/manage/forms/setup/
+    -->
+    <form
+      name="contact"
+      method="POST"
+      action="/"
+      data-netlify="true"
+      data-netlify-honeypot="bot-field"
+      hidden
+    >
+      <input type="hidden" name="form-name" value="contact" />
+      <input type="hidden" name="bot-field" />
+      <input type="text" name="name" />
+      <input type="text" name="company" />
+      <input type="email" name="email" />
+      <input type="tel" name="phone" />
+      <select name="industry">
+        <option value="Pharmaceuticals & Life Sciences">Pharmaceuticals & Life Sciences</option>
+        <option value="Manufacturing & Industrial Operations">Manufacturing & Industrial Operations</option>
+        <option value="Engineering & Industrial Technology">Engineering & Industrial Technology</option>
+        <option value="Digitally Transforming Businesses">Digitally Transforming Businesses</option>
+        <option value="Other Industry">Other Industry</option>
+      </select>
+      <select name="service">
+        <option value="Industrial Automation">Industrial Automation</option>
+        <option value="IIoT & Industry 4.0">IIoT & Industry 4.0</option>
+        <option value="Artificial Intelligence">Artificial Intelligence</option>
+        <option value="Software Solutions">Software Solutions</option>
+        <option value="Pharmaceutical & CSV Solutions">Pharmaceutical & CSV Solutions</option>
+        <option value="Other / Not Sure Yet">Other / Not Sure Yet</option>
+      </select>
+      <input type="radio" name="preferredContactMethod" value="email" />
+      <input type="radio" name="preferredContactMethod" value="phone" />
+      <textarea name="message"></textarea>
+      <input type="checkbox" name="consent" value="yes" />
+    </form>
+  </body>
+</html>

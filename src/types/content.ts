@@ -152,13 +152,20 @@ export interface SeoMeta {
 }
 
 export interface ContactFormData {
-  fullName: string;
-  companyName: string;
-  businessEmail: string;
+  name: string;
+  company: string;
+  email: string;
   phone: string;
   industry: string;
-  serviceOfInterest: string;
-  requirementDescription: string;
+  service: string;
   preferredContactMethod: 'email' | 'phone';
+  message: string;
   consent: boolean;
+  botField?: string;
+  // Legacy aliases for backward compatibility
+  fullName?: string;
+  companyName?: string;
+  businessEmail?: string;
+  serviceOfInterest?: string;
+  requirementDescription?: string;
 }

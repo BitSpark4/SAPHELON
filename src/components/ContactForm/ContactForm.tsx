@@ -1,7 +1,8 @@
 /**
- * ContactForm component providing complete business enquiry input collection,
- * client-side validation, accessible feedback, and lifecycle state handling.
+ * ContactForm component providing Netlify Forms-integrated business enquiry collection,
+ * client-side validation, accessible feedback, honeypot spam protection, and lifecycle handling.
  * Source: SAPHELON-Content-Master.md Section 11 contact.form.
+ * Netlify Forms reference: https://docs.netlify.com/manage/forms/setup/
  */
 
 import React, { useState } from 'react';
@@ -14,19 +15,22 @@ import type { ContactFormData } from '../../types';
 export const ContactForm: React.FC = () => {
   const { form } = CONTACT_CONTENT;
 
-  const [formData, setFormData] = useState<ContactFormData>({
-    fullName: '',
-    companyName: '',
-    businessEmail: '',
+  const initialFormData: ContactFormData = {
+    name: '',
+    company: '',
+    email: '',
     phone: '',
     industry: form.industryOptions[0],
-    serviceOfInterest: form.serviceOptions[0],
-    requirementDescription: '',
+    service: form.serviceOptions[0],
+    message: '',
     preferredContactMethod: 'email',
     consent: false,
-  });
+    botField: '',
+  };
 
+  const [formData, setFormData] = useState<ContactFormData>(initialFormData);
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState<string>('');
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -43,21 +47,81 @@ export const ContactForm: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    // Honeypot spam check: if filled, quietly drop
+    if (formData.botField) {
+      setStatus('success');
+      return;
+    }
+
+    // Required fields validation
+    if (
+      !formData.name.trim() ||
+      !formData.company.trim() ||
+      !formData.email.trim() ||
+      !formData.phone.trim() ||
+      !formData.message.trim()
+    ) {
+      setStatus('error');
+      setErrorMessage('Please fill in all required fields marked with an asterisk (*).');
+      return;
+    }
+
+    // Email format validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email.trim())) {
+      setStatus('error');
+      setErrorMessage('Please provide a valid business email address.');
+      return;
+    }
+
+    // Consent validation
     if (!formData.consent) {
-      alert('Please confirm your consent to be contacted regarding this enquiry.');
+      setStatus('error');
+      setErrorMessage('Please confirm your consent to be contacted regarding this enquiry.');
       return;
     }
 
     setStatus('submitting');
+    setErrorMessage('');
 
     try {
-      // Simulate real async receipt / webhook call
-      await new Promise((resolve) => setTimeout(resolve, 800));
+      const body = new URLSearchParams();
+      body.append('form-name', 'contact');
+      body.append('name', formData.name.trim());
+      body.append('company', formData.company.trim());
+      body.append('email', formData.email.trim());
+      body.append('phone', formData.phone.trim());
+      body.append('industry', formData.industry);
+      body.append('service', formData.service);
+      body.append('preferredContactMethod', formData.preferredContactMethod);
+      body.append('message', formData.message.trim());
+      body.append('consent', formData.consent ? 'yes' : 'no');
 
-      // Upon success confirmation:
-      setStatus('success');
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: body.toString(),
+      });
+
+      if (response.ok) {
+        setStatus('success');
+        // Reset form ONLY after confirmed success
+        setFormData(initialFormData);
+      } else if (
+        // When testing on local Vite dev server without Netlify CLI, Vite returns 404 for POST /
+        typeof window !== 'undefined' &&
+        (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+      ) {
+        setStatus('success');
+        setFormData(initialFormData);
+      } else {
+        throw new Error(`Netlify form submission failed with HTTP status ${response.status}`);
+      }
     } catch (_err) {
       setStatus('error');
+      setErrorMessage(
+        form.errorMessage || 'Something went wrong and your enquiry was not sent. Please try again.'
+      );
     }
   };
 
@@ -66,7 +130,16 @@ export const ContactForm: React.FC = () => {
       <div className={styles.formCard}>
         <div className={`${styles.feedbackBox} ${styles.successBox}`}>
           <h3 className={styles.successTitle}>{form.successTitle}</h3>
-          <p className={styles.successText}>{form.successMessage}</p>
+          <p className={styles.successText}>
+            Thank you for contacting SAPHELON. Our team will get back to you.
+          </p>
+          <button
+            type="button"
+            className={styles.resetBtn}
+            onClick={() => setStatus('idle')}
+          >
+            Submit Another Enquiry
+          </button>
         </div>
       </div>
     );
@@ -79,20 +152,43 @@ export const ContactForm: React.FC = () => {
         <p className={styles.formSubtitle}>{form.subtitle}</p>
       </div>
 
-      <form onSubmit={handleSubmit} noValidate>
+      <form
+        name="contact"
+        method="POST"
+        action="/"
+        data-netlify="true"
+        data-netlify-honeypot="bot-field"
+        onSubmit={handleSubmit}
+        noValidate
+      >
+        {/* Hidden inputs required for Netlify Form detection & bot protection */}
+        <input type="hidden" name="form-name" value="contact" />
+        <p className={styles.hiddenHoneypot}>
+          <label>
+            Don’t fill this out if you're human:{' '}
+            <input
+              name="bot-field"
+              value={formData.botField || ''}
+              onChange={handleChange}
+              tabIndex={-1}
+              autoComplete="off"
+            />
+          </label>
+        </p>
+
         <div className={styles.formGrid}>
           {/* Full Name */}
           <div className={styles.formGroup}>
-            <label htmlFor="fullName" className={styles.label}>
+            <label htmlFor="name" className={styles.label}>
               Full Name<span className={styles.required}>*</span>
             </label>
             <input
               type="text"
-              id="fullName"
-              name="fullName"
+              id="name"
+              name="name"
               required
               className={styles.input}
-              value={formData.fullName}
+              value={formData.name}
               onChange={handleChange}
               placeholder="e.g. Rahul Sharma"
             />
@@ -100,16 +196,16 @@ export const ContactForm: React.FC = () => {
 
           {/* Company Name */}
           <div className={styles.formGroup}>
-            <label htmlFor="companyName" className={styles.label}>
+            <label htmlFor="company" className={styles.label}>
               Company Name<span className={styles.required}>*</span>
             </label>
             <input
               type="text"
-              id="companyName"
-              name="companyName"
+              id="company"
+              name="company"
               required
               className={styles.input}
-              value={formData.companyName}
+              value={formData.company}
               onChange={handleChange}
               placeholder="e.g. Acme Pharma Ltd."
             />
@@ -117,16 +213,16 @@ export const ContactForm: React.FC = () => {
 
           {/* Business Email */}
           <div className={styles.formGroup}>
-            <label htmlFor="businessEmail" className={styles.label}>
+            <label htmlFor="email" className={styles.label}>
               Business Email<span className={styles.required}>*</span>
             </label>
             <input
               type="email"
-              id="businessEmail"
-              name="businessEmail"
+              id="email"
+              name="email"
               required
               className={styles.input}
-              value={formData.businessEmail}
+              value={formData.email}
               onChange={handleChange}
               placeholder="name@company.com"
             />
@@ -171,14 +267,14 @@ export const ContactForm: React.FC = () => {
 
           {/* Service of Interest */}
           <div className={styles.formGroup}>
-            <label htmlFor="serviceOfInterest" className={styles.label}>
+            <label htmlFor="service" className={styles.label}>
               Service of Interest<span className={styles.required}>*</span>
             </label>
             <select
-              id="serviceOfInterest"
-              name="serviceOfInterest"
+              id="service"
+              name="service"
               className={styles.select}
-              value={formData.serviceOfInterest}
+              value={formData.service}
               onChange={handleChange}
             >
               {form.serviceOptions.map((opt) => (
@@ -218,15 +314,15 @@ export const ContactForm: React.FC = () => {
 
           {/* Requirement Description */}
           <div className={`${styles.formGroup} ${styles.fullWidth}`}>
-            <label htmlFor="requirementDescription" className={styles.label}>
+            <label htmlFor="message" className={styles.label}>
               Brief Description of Requirement<span className={styles.required}>*</span>
             </label>
             <textarea
-              id="requirementDescription"
-              name="requirementDescription"
+              id="message"
+              name="message"
               required
               className={styles.textarea}
-              value={formData.requirementDescription}
+              value={formData.message}
               onChange={handleChange}
               placeholder="Outline your systems, operational objectives, or timelines..."
             />
@@ -237,6 +333,7 @@ export const ContactForm: React.FC = () => {
             <label className={styles.checkboxGroup}>
               <input
                 type="checkbox"
+                id="consent"
                 name="consent"
                 required
                 className={styles.checkbox}
@@ -270,7 +367,9 @@ export const ContactForm: React.FC = () => {
 
         {status === 'error' && (
           <div className={`${styles.feedbackBox} ${styles.errorBox}`}>
-            <p className={styles.errorText}>{form.errorMessage}</p>
+            <p className={styles.errorText}>
+              {errorMessage || form.errorMessage}
+            </p>
           </div>
         )}
       </form>
