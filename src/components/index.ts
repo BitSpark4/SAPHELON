@@ -32,3 +32,4 @@ export * from './ServicePageTemplate';
 export * from './ContactForm';
 export * from './ScrollToTop';
 export * from './AnimatedServiceIcon';
+export * from './PageSeo';

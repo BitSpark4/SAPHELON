@@ -8,7 +8,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import styles from './App.module.css';
-import { BrandDefs, ScrollToTop } from './components';
+import { BrandDefs, ScrollToTop, PageSeo } from './components';
 import {
   HomePage,
   AboutPage,
@@ -31,6 +31,7 @@ export const App: React.FC = () => {
   return (
     <BrowserRouter>
       <ScrollToTop />
+      <PageSeo />
       <div className={styles.app}>
         {/* Global SVG Symbol Definitions for S Logo and Gradients */}
         <BrandDefs />
